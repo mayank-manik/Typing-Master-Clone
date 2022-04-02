@@ -1,11 +1,13 @@
 let text = document.querySelector("p");
-var audio = new Audio("error.mp3");
-var char = new Array(),
-  current = 0,
-  string;
+let timer = document.getElementById("timer");
+let audio = new Audio("error.mp3");
+let char = new Array(), current = 0, string;
+let min = 0;
+let sec = 0;
+
 
 window.addEventListener("load", () => {
-  let url = "https://api.quotable.io/random";
+  let url = "https://api.quotable.io/random?maxLength=150";
   fetch(url)
     .then((response) => {
       return response.json();
@@ -34,13 +36,29 @@ function keyListener(e) {
     markText(str);
 
     if (current >= char.length) {
-      console.log("HurraH...");
+      alert(`Hurrah !! You made it in ${min}m ${sec}s.`);
       location.reload();
     }
   } else {
     audio.play();
-    console.log("wrong");
   }
 }
 
+function timerUpdate() {
+  sec = (sec + 1);
+  if (sec >= 60) {
+    sec = 0;
+    min++;
+  }
+  timer.innerHTML = `${min}:${sec}`;
+}
+
+function timerStart(e) {
+  setInterval(() => {
+    timerUpdate()
+  }, 1000);
+}
+
+
 document.addEventListener("keypress", keyListener);
+document.addEventListener("keypress", timerStart, { once: true });

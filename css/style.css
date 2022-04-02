@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -12,27 +13,57 @@ body {
   background-image: linear-gradient(120deg, #a9c9ff 0%, #ffbbec 100%);
 }
 
+#heading {
+  text-align: center;
+  position: relative;
+  top: 5vh;
+  text-decoration:wavy;
+}
+
 #text {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70vh;
-  margin-top: 10vh;
+  height: 60vh;
+  position: relative;
 }
 
 div > p {
-  border: 2px solid black;
   margin: 0 10vw;
-  padding: 1vh 4vw;
   font-weight: 600;
-  font-size: 2em;
+  font-size: 1.7em;  
 }
 
-@media only screen and (max-width: 600px){
-  #text{
-    height: 80vh;
+#timer{
+  position: relative;
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 10vw;
+  height: 8vh;
+  left: 75vw;
+  top: 15vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 600px) {
+  body{
+    height: 100vh;
   }
-  div>p{
-    font-size: 1.5em;
+  #text {
+    height: 80vh;
+    margin: 0 2vw;
+    /* top: 5vh; */
+  }
+  div > p {
+    font-size: 20px;
+    margin: 0;
+  }
+  #timer{
+    width: 25vw;
+    left: 70vw;
+    font-size: 1.2rem;
   }
 }
